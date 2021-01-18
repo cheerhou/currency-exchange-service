@@ -20,7 +20,7 @@ public class CurrencyExchangeController {
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}")
     public ExchangeRate retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-        ExchangeRate exchangeRate = new ExchangeRate(1000L, from, to, BigDecimal.valueOf(65));
+        ExchangeRate exchangeRate = new ExchangeRate(1000L, from, to, BigDecimal.valueOf(65), 0);
         exchangeRate.setPort(
                 Integer.parseInt(environment.getProperty("local.server.port"))
         );
