@@ -17,10 +17,14 @@ import java.math.BigDecimal;
 public class CurrencyExchangeController {
     @Autowired
     private Environment environment;
+    @Autowired
+    private ExchangeRateRepo repo;
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}")
     public ExchangeRate retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-        ExchangeRate exchangeRate = new ExchangeRate(1000L, from, to, BigDecimal.valueOf(65), 0);
+        ExchangeRate exchangeRate = repo.findByFromAndTo(from, to);
+
+        //读取配置文件中的port参数
         exchangeRate.setPort(
                 Integer.parseInt(environment.getProperty("local.server.port"))
         );
