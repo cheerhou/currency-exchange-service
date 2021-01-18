@@ -12,6 +12,7 @@ public class ExchangeRate {
     private String from;
     private String to;
     private BigDecimal conversionMultiple;
+    private int port;
 
     public ExchangeRate() {
     }
@@ -45,5 +46,13 @@ public class ExchangeRate {
 
     public void setConversionMultiple(BigDecimal conversionMultiple) {
         this.conversionMultiple = conversionMultiple;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 }
